@@ -1,0 +1,11 @@
+Feature: Recenzie utilizator
+Scenario 1: Utilizatorul logat plaseaza cu succes o comanda unui produs
+Given Utilizatorul logat se afla pe pagina principal
+When Utilizatorul introduce textul "Macbook" in sectiunea de cautare
+        And Utilizatorul selecteaza un produs din toate disponibile
+And Utilizatorul apasa butonul "Cumpara cu livrarea"
+Then Utilizatorul ar trebui sa fie redectionat pe pagina de cumparare
+  And Utilizatorul ar trebui sa  complecteze datele livrarii
+And Utilizatorul ar trebui sa apasa butonul "Continua"
+And Utilizatorul ar trebui sa apasa butonul "Cumpara"
+
