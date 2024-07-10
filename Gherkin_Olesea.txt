@@ -8,4 +8,4 @@ Then Utilizatorul ar trebui sa fie redectionat pe pagina de cumparare
   And Utilizatorul ar trebui sa  complecteze datele livrarii
 And Utilizatorul ar trebui sa apasa butonul "Continua"
 And Utilizatorul ar trebui sa apasa butonul "Cumpara"
-
+And utilizatorul primeste mesaj "Cumparat cu succes"
