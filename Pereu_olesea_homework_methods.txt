@@ -1,0 +1,316 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class HomeworkL5L6 {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		
+	//# get
+		WebDriverManager.chromedriver();
+		ChromeDriver driver = new ChromeDriver();
+		Thread.sleep(3000);
+		driver.get("https://makeup.ie");
+		driver.findElement(By.xpath("/html/body/div[3]/div/button")).click();
+			
+	
+//# manage
+			//WebDriverManager.chromedriver();
+			//ChromeDriver driver = new ChromeDriver();
+			//driver.get("https://makeup.ie");
+			Thread.sleep(3000);
+			driver.manage().window().fullscreen();
+			//driver.findElement(By.xpath("/html/body/div[3]/div/button")).click();
+			
+			
+//# getCurrentUrl ==>  
+		
+		//WebDriverManager.chromedriver();
+		//ChromeDriver driver = new ChromeDriver(); 
+		//driver.get("https://makeup.ie");
+		driver.manage().window().maximize();
+		Thread.sleep(3000);
+	String currentUrl = driver.getCurrentUrl(); // creem obiectul de tip string care va avea variabila d currentUrl
+	System.out.println("adresa curenta este : " + currentUrl);//printarea unui mesaj format dintr-un text personalizat scris prin "" si concatinat cu variabila currentUrl
+		
+
+//# getTitle 
+		//WebDriverManager.chromedriver();
+		//ChromeDriver driver = new ChromeDriver(); 
+		//driver.get("https://makeup.ie");
+                driver.manage().window().maximize();
+	       Thread.sleep(3000);
+	      //driver.findElement(By.xpath("/html/body/div[3]/div/button")).click();
+		String mainpageTitle = driver.getTitle();
+		System.out.println("Title curent este : " + mainpageTitle);
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("/html/body/div[1]/div[2]/header/div[2]/div/div[3]/div[1]")).click();
+		String secondpageTitle = driver.getTitle();
+		System.out.println("Title pagina nr2: " + secondpageTitle);
+		
+//# getPageSource
+	//WebDriverManager.chromedriver();
+	//ChromeDriver driver = new ChromeDriver(); 
+	//driver.get("https://makeup.ie");
+	//Thread.sleep(3000);
+	//String codeSource = driver.getPageSource();
+	//System.out.println("code source : " + codeSource);
+		
+	
+//#navigate ==> se deschide o alta adresa web in cadrul aceluiasi tab 
+	 // WebDriverManager.chromedriver();
+	  //ChromeDriver driver = new ChromeDriver(); 
+	  // driver.get("https://makeup.ie");
+	  driver.manage().window().maximize();
+	  Thread.sleep(3000);	
+	 String makeupPageTitle = driver.getTitle();
+	System.out.println("Titlu pagina Makeup: " + makeupPageTitle);
+	Thread.sleep(3000);
+	driver.navigate().to( "https://iherb.com" );
+	String iherbPageTitle = driver.getTitle();
+	System.out.println(" Titlu pagina iHERB :" + iherbPageTitle);
+			
+ //#quit method ==> inchide browser-ul indiferent de nr de taburi deschise
+	//WebDriverManager.chromedriver();
+       //ChromeDriver driver = new ChromeDriver(); 
+  	driver.get("https://makeup.ie");
+	driver.manage().window().maximize();
+        System.out.println("sa deschis browser-ul");
+        Thread.sleep(3000);
+        //driver.findElement(By.xpath("/html/body/div[3]/div/button")).click();
+        Thread.sleep(3000);
+        driver.quit();
+        System.out.println("sa inchis browser-ul");
+
+
+
+//findElement method
+	//WebDriverManager.chromedriver();
+	ChromeDriver driver1 = new ChromeDriver(); 	
+	driver1.get("https://makeup.ie");
+	driver1.manage().window().maximize();
+       System.out.println("sa deschis browser-ul");
+       Thread.sleep(3000);	
+       driver1.findElement(By.xpath("/html/body/div[3]/div/button")).click();
+	
+//#windowHandle ==> va printa un identificator unic pentru pagina respectiva (id unic) 
+	  //WebDriverManager.chromedriver();
+        // ChromeDriver driver1 = new ChromeDriver(); 
+	  driver1.get("https://makeup.ie");
+	  driver1.manage().window().maximize();
+	  System.out.println("sa deschid browser-ul");
+        Thread.sleep(3000);
+	 String identificatorUnicAlPaginii = driver1.getWindowHandle();
+	 System.out.println(identificatorUnicAlPaginii);
+		
+//close method ==> inchide doar tab-ul curent, daca este doar un singur tab atunci inchide tot site-ul
+	  //WebDriverManager.chromedriver();
+	  //ChromeDriver driver1 = new ChromeDriver(); 
+         driver1.get("https://makeup.ie");
+          driver1.manage().window().maximize();
+	System.out.println("sa deschid browser-ul");
+	//driver.findElement(By.xpath("/html/body/div[3]/div/button")).click();
+	Thread.sleep(10000);
+	driver1.close();
+	System.out.println("sa inchis tab-ul curent");
+		
+		
+	
+//switchto ==> ajuta la mutarea de la un tab la altul  nu era pe makeup.ie
+	        /* ChromeDriver driverChrome = new ChromeDriver();
+		 driverChrome.get("https://point.md");
+		 driverChrome.findElement(By.xpath("/html/body/div[4]/div[2]/div[1]/div[2]/div[2]/button[1]")).click();
+		 driverChrome.manage().window().maximize();
+		 String firstPageTitle = driverChrome.getTitle();
+		System.out.println(firstPageTitle);
+		Thread.sleep(5000);
+		driverChrome.findElement(By.xpath("//*[@id=\"__next\"]/div/div[7]/div[2]/div[1]/div[2]/div[1]/a/span/img")).click();
+		Thread.sleep(15000);
+		 String secondPageTitle = driverChrome.getTitle();
+		 System.out.println(secondPageTitle);
+		 driverChrome.switchTo().window("??????? ??????? - Point.md"); 
+*/
+		
+// #12 sendKeys
+		ChromeDriver Chromedriver = new ChromeDriver();
+		 Chromedriver.get("https://makeup.ie");
+		 Thread.sleep(3000);
+		 Chromedriver.findElement(By.xpath("/html/body/div[3]/div/button")).click();
+		Chromedriver.manage().window().maximize();
+	       Chromedriver.findElement(By.xpath("/html/body/div[1]/div[2]/header/div[2]/div/div[3]/div[1]")).click();
+	       Thread.sleep(3000);
+		Chromedriver.findElement(By.xpath("//*[@id=\"login\"]")).sendKeys("alessea@gmail.com"); 
+
+// #13 clear
+		// ChromeDriver Chromedriver = new ChromeDriver();
+		//Chromedriver.get("https://makeup.ie");
+		//Chromedriver.findElement(By.xpath("/html/body/div[3]/div/button")).click();
+		Chromedriver.manage().window().maximize();
+		//Chromedriver.findElement(By.xpath("/html/body/div[1]/div[2]/header/div[2]/div/div[3]/div[1]")).click();
+		//Chromedriver.findElement(By.xpath("//*[@id=\"login\"]")).sendKeys("alessea@gmail.com");
+		 Thread.sleep(5000);
+		 Chromedriver.findElement(By.xpath("//*[@id=\"login\"]")).clear();
+
+// #14 click - la interviu cand intreaba de click se are in vedere click stanga,
+		// nu dreapta
+		 //ChromeDriver Chromedriver= new ChromeDriver();
+		 //Chromedriver.get("https://makeup.ie");
+		 Chromedriver.manage().window().maximize();
+		 //Chromedriver.findElement(By.xpath("/html/body/div[3]/div/button")).click();
+		//Chromedriver.findElement(By.xpath("/html/body/div[1]/div[2]/header/div[2]/div/div[3]/div[1]")).click();
+		// Chromedriver.findElement(By.xpath("//*[@id=\"login\"]")).sendKeys("alessea@gmail.com");
+	         Thread.sleep(3000);
+		 Chromedriver.findElement(By.xpath("//*[@id=\"pw\"]")).click();
+		 
+// #15 getAttribute
+	  //ChromeDriver Chromedriver = new ChromeDriver();
+	 //Chromedriver.get("https://makeup.ie");
+	  Chromedriver.manage().window().maximize();
+	  //Chromedriver.findElement(By.xpath("/html/body/div[3]/div/button")).click();
+	 Thread.sleep(3000);
+	 Chromedriver.findElement(By.xpath("/html/body/div[1]/div[2]/header/div[2]/div/div[3]/div[1]")).click();
+	 System.out.println(Chromedriver.findElement(By.xpath("//*[@id=\"login\"]")).getAttribute("placeholder")); 
+
+// #16 getCssValue
+	 // ChromeDriver Chromedriver = new ChromeDriver();
+	 //Chromedriver.get("https://makeup.ie");
+	 Chromedriver.manage().window().maximize();
+	//Chromedriver.findElement(By.xpath("/html/body/div[3]/div/button")).click();
+	Chromedriver.findElement(By.xpath("/html/body/div[1]/div[2]/header/div[2]/div/div[3]/div[1]")).click();
+       System.out.println(Chromedriver.findElement(By.xpath("//*[@id=\"login\"]")).getCssValue("font-family")); 
+	 
+// #17 getLocation - inseamna get position of the element on the page
+	    // ChromeDriver Chromedriver = new ChromeDriver();
+	    // Chromedriver.get("https://makeup.ie");
+	     Chromedriver.manage().window().maximize();
+	     System.out.println(Chromedriver.findElement(By.xpath("//*[@id=\"login\"]")).getLocation()); 
+	 
+// #18 getSize
+	 //ChromeDriver Chromedriver = new ChromeDriver();
+	 //Chromedriver.get("https://makeup.ie");
+	 Chromedriver.manage().window().maximize();
+	System.out.println(Chromedriver.findElement(By.xpath("//*[@id=\"login\"]")).getSize());
+	 
+// #19 getTagName
+	 //ChromeDriver Chromedriver= new ChromeDriver();
+	 //Chromedriver.get("https://makeup.ie");
+	 Chromedriver.manage().window().maximize();
+	 System.out.println(Chromedriver.findElement(By.xpath("//*[@id=\"login\"]")).getTagName());
+		
+//#20 getText (nu merge - update Selenium version)
+		//ChromeDriver Chromedriver = new ChromeDriver();
+		//Chromedriver.get("https://makeup.ie");
+		// Chromedriver.manage().window().maximize();
+		//Chromedriver.findElement(By.xpath("/html/body/div[1]/div[2]/header/div[2]/div/div[3]/div[1]")).click();
+		// System.out.println(Chromedriver.findElement(By.xpath("//*[@id=\"form-auth\"]/div/div/h2")).getText());
+		 
+// #21 isDisplayed
+	          //ChromeDriver Chromedriver = new ChromeDriver();
+				//Chromedriver.get("https://makeup.ie");
+				 Chromedriver.manage().window().maximize();
+				//Chromedriver.findElement(By.xpath("/html/body/div[3]/div/button")).click();
+				Chromedriver.findElement(By.xpath("/html/body/div[1]/div[2]/header/div[2]/div/div[3]/div[1]")).click();		System.out.println(Chromedriver.findElement(By.xpath("/html/body/div[1]/div[2]/header/div[2]/div/div[3]/div[1]")).isDisplayed());
+		
+// #22 isEnabled ==> valoarea implicita este true
+		        WebDriverManager.chromedriver();
+				ChromeDriver Chromedriver3 = new ChromeDriver();
+				Chromedriver3.get("https://makeup.ie");
+				 Chromedriver3.manage().window().maximize();
+				Chromedriver3.get("https://makeup.ie");
+				System.out.println("am accesat sait-ul");		System.out.println(Chromedriver3.findElement(By.xpath("/html/body/div[1]/div[2]/header/div[2]/div/div[2]/a")).isEnabled());
+		*/
+// #22 checkBoxes ==> are loc prin metoda click
+	   //WebDriverManager.chromedriver();
+	    //ChromeDriver Chromedriver3 = new ChromeDriver();
+		Chromedriver3.manage().window().maximize();
+		Chromedriver3.get("https://makeup.ie");
+		Thread.sleep(3000);
+		Chromedriver3.findElement(By.xpath("/html/body/div[3]/div/button")).click();
+		Thread.sleep(3000);
+		Chromedriver3.findElement(By.xpath("/html/body/div[1]/div[2]/nav/div[2]/ul[1]/li[10]/a")).click();
+		Thread.sleep(3000);
+		Chromedriver3.findElement(By.xpath("//*[@id=\"popularinput-checkbox-2243-25801\"]")).click();
+
+// #23 isSelected ==>ofera raspunsul True or False daca un radio button este selectat
+		//WebDriverManager.chromedriver();
+	         ChromeDriver Chromedriver2 = new ChromeDriver();
+		 Chromedriver2.manage().window().maximize();
+	         Chromedriver2.get("https://makeup.ie");
+		Thread.sleep(3000);
+		Chromedriver2.findElement(By.xpath("/html/body/div[3]/div/button")).click();
+		Thread.sleep(3000);
+		System.out.println(Chromedriver2.findElement(By.xpath("//*[@id=\"popularinput-checkbox-2243-25801\"]")).isSelected());
+		Thread.sleep(3000);
+       Chromedriver2.findElement(By.xpath("//*[@id=\"popularinput-checkbox-2243-25801\"]")).click();
+        System.out.println(Chromedriver2.findElement(By.xpath("//*[@id=\"popularinput-checkbox-2243-25801\"]")).isSelected());
+   
+// #24 dropdowns (Nu sunt pe sait makeup.ie)
+   
+     // dropdown prin intermediu crearea Webelement si select
+		 WebDriverManager.chromedriver().setup();
+		 ChromeDriver driverChrome1 = new ChromeDriver();
+		  driverChrome1.get("https://www.globalsqa.com/demo-site/select-dropdown-menu/");
+		  driverChrome1.manage().window().maximize();
+		  driverChrome1.findElement(By.xpath("/html/body/div[2]/div[2]/div[1]/div[2]/div[2]/button[1]/p")).click();
+		  WebElement ddown = driverChrome1.findElement(By.xpath("//*[@id=\"post-2646\"]/div[2]/div/div/div/p/select")); 
+		 Select selectedOption = new Select(ddown); 
+		 selectedOption.selectByValue("ARG");
+		 Thread.sleep(3000); 
+		//selectedOption.selectByVisibleText("Argentina");
+// System.out.println(driverChrome1.findElement(By.xpath("//*[@id=\"post-2646\"]/div[2]/div/div/div/p/select/option[11]")).isSelected());
+		
+		
+//#26 dropdown prin intermediu Testaura
+		//WebDriverManager.chromedriver();
+	        ChromeDriver driver4 = new ChromeDriver();
+	        driver4.get("https://www.tarom.ro/");
+		driver4.findElement(By.xpath("//*[@id=\"CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll\"]")).click();
+		driver4.findElement(By.xpath("//*[@id=\"ta-from-location-input\"]")).click();
+		Thread.sleep(2000);
+		driver4.findElement(By.xpath("//*[@id=\"ta-from-location-input\"]")).sendKeys("Ita");
+		Thread.sleep(2000);
+		driver4.findElement(By.xpath("//*[@id=\"ta-from-location-input\"]")).sendKeys(Keys.ARROW_DOWN);
+		Thread.sleep(2000);
+		driver4.findElement(By.xpath("//*[@id=\"ta-from-location-input\"]")).sendKeys(Keys.ENTER);
+		
+//#27 Scrolling ==> poate fi efectuat prin web element + action
+		
+				//WebDriverManager.chromedriver();
+				//ChromeDriver driver4 = new ChromeDriver();
+						
+				driver4.get("https://iherb.md");
+				driver4.findElement(By.xpath("//*[@id=\"truste-consent-button\"]")).click();
+				driver4.manage().window().maximize();
+				Thread.sleep(3000);	
+	WebElement bestSellers = driver4.findElement(By.xpath("//*[@id=\"hp-module-best-selling\"]/div[1]/div/div[1]/div/b"));
+			 Actions act = new Actions(driver4);
+			Thread.sleep(5000);
+			act.moveToElement(bestSellers);
+			act.perform();
+
+// #28 radio buttons
+			  //ChromeDriver driver4 = new ChromeDriver();
+			  driver4.get("https://ie.sportsdirect.com/kids/footwear/trainers#dcp=1&dppp=60&OrderBy=rank"); 
+			 driver4.manage().window().maximize();
+			 driver4.findElement(By. xpath("//*[@id=\"onetrust-accept-btn-handler\"]")).click();
+			  Thread.sleep(4000);
+			
+			 WebElement radio1 = driver4.findElement(By.xpath("//*[@id=\"MobSortOptions_rank\"]"));
+			 System.out.println(radio1.isSelected()); 
+			 Thread.sleep(3000);
+			 WebElement radio2 = driver4.findElement(By.xpath("//*[@id=\"MobSortOptions_recent\"]")); 
+			 System.out.println(radio2.isSelected());
+		        radio2.click();
+		          System.out.println("Dupa click, acestea sunt urmatoarele rezultate: "); 
+			 System.out.println(radio1.isSelected()); 
+			 System.out.println(radio2.isSelected()); 
+
+
+	}
+}
