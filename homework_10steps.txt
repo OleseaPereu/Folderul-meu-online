@@ -1,0 +1,316 @@
+import org.openqa.selenium.TakesScreenshot;
+import com.google.common.io.Files;
+import java.util.Date;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class Homework_lesson9_10steps {
+
+	public static void main(String[] args) throws InterruptedException, IOException {
+		// TODO Auto-generated method stub
+		
+            EdgeDriver driver = new EdgeDriver();
+		
+		 driver.get("https://www.herb.md");
+		 driver.manage().window().maximize();
+		// driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+		 Thread.sleep(3000);
+		 System.out.println("Am accesat saitul");
+		 
+		 driver.findElement(By.xpath("//*[@id=\"page\"]/header/div[1]/div[2]/div/div/div[2]/div/div[1]")).click();
+	        Thread.sleep(3000);
+		driver.findElement(By.xpath("//*[@id=\"insert_email\"]")).click();
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//*[@id=\"insert_email\"]")).sendKeys("alessea111@gmail.com");
+		 System.out.println("Am introdus userName");
+		 
+		driver.findElement(By.xpath("//*[@id=\"insert_password\"]")).click();
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//*[@id=\"insert_password\"]")).sendKeys("Aleksa2112@#");
+		System.out.println("Am introdus parola");
+		 
+
+		 //Thread.sleep(10000);
+	      // Date currentDate3 = new Date();
+			
+		//System.out.println("Current date in old format: " + currentDate3);
+			
+		//String homeworkscreenFileName3 = currentDate3.toString().replace(":", "-").replace(" ", "-").replace("-EET-2024", "");
+		//System.out.println("Current date in new format: " + homeworkscreenFileName3);
+			
+		//File homeworkscreenFile3 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		//Files.copy(homeworkscreenFile3, new File(".//homeworkscreen/" + homeworkscreenFileName3 + ".png"));
+			
+		//System.out.println("Screenshort1");
+		 
+		 
+       Thread.sleep(3000);
+       driver.findElement(By.xpath("/html/body/div[1]/div[2]/div[7]/span")).click();
+	System.out.println("Am intrat in cabinet");	 
+
+         //Thread.sleep(5000);
+         // Date currentDate4 = new Date();
+		
+        //System.out.println("Current date in old format: " + currentDate4);
+		
+       //String homeworkscreenFileName4 = currentDate4.toString().replace(":", "-").replace(" ", "-").replace("-EET-2024", "");
+      //System.out.println("Current date in new format: " + homeworkscreenFileName4);
+		
+	//File homeworkscreenFile4 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+	//Files.copy(homeworkscreenFile4, new File(".//homeworkscreen/" + homeworkscreenFileName4 + ".png"));
+		
+	//System.out.println("Screenshort2");
+
+
+	  Thread.sleep(3000);
+	  WebElement catalogMenu = driver.findElement(By.xpath("//*[@id=\"page\"]/header/div[1]/nav/div/ul/li[1]/a"));
+	  Actions hoverAction= new Actions(driver);
+	 hoverAction.moveToElement(catalogMenu).perform();
+	 Thread.sleep(3000);
+	 driver.findElement(By.xpath("//*[@id=\"page\"]/header/div[1]/nav/div/ul/li[1]/div/ul/div/li[1]/a")).click();
+	 System.out.println("Am intrat Catalog");
+		
+		
+
+	  // Thread.sleep(5000);
+	  // Date currentDate5 = new Date();
+		
+	 //System.out.println("Current date in old format: " + currentDate5);
+			
+	//String homeworkscreenFileName5 = currentDate5.toString().replace(":", "-").replace(" ", "-").replace("-EET-2024", "");
+	//System.out.println("Current date in new format: " + homeworkscreenFileName5);
+			
+	//File homeworkscreenFile5 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+	//Files.copy(homeworkscreenFile5, new File(".//homeworkscreen/" + homeworkscreenFileName5 + ".png"));
+			
+	//System.out.println("Screenshort3");
+
+		
+	
+	Thread.sleep(3000);
+       driver.findElement(By.xpath("//*[@id=\"page\"]/div[3]/div[2]/div/div[3]/div[5]/div[2]/div[3]")).click();
+       System.out.println("CheckBox-click-Cosrx");
+		
+		
+	//  Thread.sleep(5000);
+	//  Date currentDate6 = new Date();
+		
+	//System.out.println("Current date in old format: " + currentDate6);
+			
+	//String homeworkscreenFileName6 = currentDate6.toString().replace(":", "-").replace(" ", "-").replace("-EET-2024", "");
+	//System.out.println("Current date in new format: " + homeworkscreenFileName6);
+			
+	//File homeworkscreenFile6 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+	//Files.copy(homeworkscreenFile6, new File(".//homeworkscreen/" + homeworkscreenFileName6 + ".png"));
+			
+	//System.out.println("Screenshort4");
+
+	
+		
+	Thread.sleep(3000);
+	  driver.findElement(By.xpath("//*[@id=\"products-container\"]/div[1]/a/span[1]/img")).click();
+	System.out.println("Alegem produs");
+		
+	
+	  Thread.sleep(3000);
+	  driver.findElement(By.xpath("//*[@id=\"page\"]/div[3]/div[1]/div[1]/div/div[2]/a/img")).click();
+	  System.out.println("Alegem produs");
+				
+	  // Thread.sleep(5000);
+	  //  Date currentDate7 = new Date();
+			
+	         //System.out.println("Current date in old format: " + currentDate7);
+				
+		\\String homeworkscreenFileName7 = currentDate7.toString().replace(":", "-").replace(" ", "-").replace("-EET-2024", "");
+		\\System.out.println("Current date in new format: " + homeworkscreenFileName7);
+				
+		\\File homeworkscreenFile7 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		\\Files.copy(homeworkscreenFile7, new File(".//homeworkscreen/" + homeworkscreenFileName7 + ".png"));
+				
+		\\System.out.println("Screenshort5");
+		 
+		 
+		 
+	Thread.sleep(3000);
+driver.navigate().to( "https://herb.md/masca-de-fata-cu-extract-de-melc-cosrx-advanced-snail-mucin-power-essence-sheet-mask-25-ml/" );
+String mascaPageTitle = driver.getTitle();
+System.out.println(" Titlu pagina mascaPage :" + mascaPageTitle);
+		
+	Thread.sleep(3000);
+	driver.findElement(By.xpath("//*[@id=\"page\"]/div[3]/div[1]/div[2]/div/div[4]/div/div[2]/div[2]")).click();
+	System.out.println("S-a adaugat in cos de cumparaturi");
+
+	// Thread.sleep(5000);
+	// Date currentDate8 = new Date();
+			
+	//System.out.println("Current date in old format: " + currentDate8);
+				
+	//String homeworkscreenFileName8 = currentDate8.toString().replace(":", "-").replace(" ", "-").replace("-EET-2024", "");
+	//System.out.println("Current date in new format: " + homeworkscreenFileName8);
+				
+	//File homeworkscreenFile8 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+	//Files.copy(homeworkscreenFile8, new File(".//homeworkscreen/" + homeworkscreenFileName8 + ".png"));
+				
+	//System.out.println("Screenshort6");
+		 
+		 
+			
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//*[@id=\"page\"]/aside/div[4]/button")).click();
+		System.out.println("Continuam cumparaturi");
+	
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//*[@id=\"search\"]")).click();
+		 
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@id=\"search\"]")).sendKeys("Bal");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@id=\"search\"]")).sendKeys(Keys.ARROW_DOWN);
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@id=\"search\"]")).sendKeys(Keys.ENTER);
+	        System.out.println("DropDown"); 
+			
+		  //Thread.sleep(5000);
+		  // Date currentDate9 = new Date();
+			
+		//System.out.println("Current date in old format: " + currentDate9);
+				
+		//String homeworkscreenFileName9 = currentDate9.toString().replace(":", "-").replace(" ", "-").replace("-EET-2024", "");
+		//System.out.println("Current date in new format: " + homeworkscreenFileName9);
+				
+		//File homeworkscreenFile9 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		//Files.copy(homeworkscreenFile9, new File(".//homeworkscreen/" + homeworkscreenFileName9 + ".png"));
+				
+		//System.out.println("Screenshort7");
+			
+			
+				
+		//Thread.sleep(3000);
+		//driver.findElement(By.xpath("//*[@id=\"page\"]/header/div[1]/div[1]/div/div/div[1]/div/a[1]")).click();
+		// Thread.sleep(2000);
+		//System.out.println("Magazinele noastre");
+		      
+		  // Thread.sleep(3000);
+		//WebElement ourShops = driver.findElement(By.xpath("//*[@id=\"page\"]/div[3]/div[4]/div/div/div/h3/span"));
+		//Actions act = new Actions(driver);
+		//Thread.sleep(3000);
+		//act.moveToElement(ourShops);
+		//act.perform();
+		//System.out.println("Scrolling pina la Numarul de tel:");	
+		      
+		     
+				
+		  // Thread.sleep(5000);
+		 // Date currentDate10 = new Date();
+				
+		//System.out.println("Current date in old format: " + currentDate10);
+					
+		//String homeworkscreenFileName10 = currentDate10.toString().replace(":", "-").replace(" ", "-").replace("-EET-2024", "");
+		//System.out.println("Current date in new format: " + homeworkscreenFileName10);
+					
+		//File homeworkscreenFile10 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		//Files.copy(homeworkscreenFile10, new File(".//homeworkscreen/" + homeworkscreenFileName10 + ".png"));
+					
+		//System.out.println("Screenshort8");
+				
+		Thread.sleep(3000);
+		 driver.findElement(By.xpath("//*[@id=\"page\"]/header/div[1]/div[2]/div/div/div[2]/div/div[1]")).click();
+	 	System.out.println("Cabinetul meu");
+				
+		 driver.findElement(By.xpath("//*[@id=\"page\"]/div[3]/div[2]/div/div[1]/div/a[2]")).click();
+		Thread.sleep(2000);
+		System.out.println("Modifica parola");
+				
+				
+				
+			
+		//Thread.sleep(5000);
+		// Date currentDate11 = new Date();
+		
+		//System.out.println("Current date in old format: " + currentDate11);
+					
+		//String homeworkscreenFileName11 = currentDate11.toString().replace(":", "-").replace(" ", "-").replace("-EET-2024", "");
+		//System.out.println("Current date in new format: " + homeworkscreenFileName11);
+					
+			
+		//File homeworkscreenFile11 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		//Files.copy(homeworkscreenFile11, new File(".//homeworkscreen/" + homeworkscreenFileName11 + ".png"));
+				
+		//System.out.println("Screenshort9");
+				
+				
+				
+				
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//*[@id=\"page\"]/div[3]/div[2]/div/div[2]/div/div[2]/input")).click();
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//*[@id=\"page\"]/div[3]/div[2]/div/div[2]/div/div[2]/input")).sendKeys("Aleksa2112@#");
+		 System.out.println("Am introdus parola veche");	
+				
+				
+		//Thread.sleep(5000);
+	        \\ Date currentDate12 = new Date();
+					
+		//System.out.println("Current date in old format: " + currentDate12);
+					
+		//String homeworkscreenFileName12 = currentDate12.toString().replace(":", "-").replace(" ", "-").replace("-EET-2024", "");
+		//System.out.println("Current date in new format: " + homeworkscreenFileName12);
+					
+		//File homeworkscreenFile12 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		//Files.copy(homeworkscreenFile12, new File(".//homeworkscreen/" + homeworkscreenFileName12 + ".png"));
+					
+		//System.out.println("Screenshort10");
+				
+				
+		 Thread.sleep(3000);
+		driver.findElement(By.xpath("//*[@id=\"page\"]/div[3]/div[2]/div/div[2]/div/div[3]/input")).click();
+		Thread.sleep(3000);
+					
+		driver.findElement(By.xpath("//*[@id=\"page\"]/div[3]/div[2]/div/div[2]/div/div[3]/input")).sendKeys("Aleksa2112@@");		
+		 System.out.println("Am introdus parola noua");	
+					 
+				 
+	   //Thread.sleep(5000);
+	    // Date currentDate13 = new Date();
+						
+		//System.out.println("Current date in old format: " + currentDate13);
+							
+		//String homeworkscreenFileName13 = currentDate13.toString().replace(":", "-").replace(" ", "-").replace("-EET-2024", "");
+		//System.out.println("Current date in new format: " + homeworkscreenFileName13);
+							
+		//File homeworkscreenFile13 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		//Files.copy(homeworkscreenFile13, new File(".//homeworkscreen/" + homeworkscreenFileName13 + ".png"));
+							
+		//System.out.println("Screenshort11");
+					 
+		 Thread.sleep(3000);
+		driver.findElement(By.xpath("//*[@id=\"page\"]/div[3]/div[2]/div/div[2]/div/div[4]/input")).click();
+		Thread.sleep(3000);
+						
+		driver.findElement(By.xpath("//*[@id=\"page\"]/div[3]/div[2]/div/div[2]/div/div[4]/input")).sendKeys("Aleksa2112@@");
+						
+		System.out.println("Am introdus parola noua repetat");	
+						 
+						 
+		//Thread.sleep(5000);
+	        // Date currentDate14 = new Date();
+								
+		//System.out.println("Current date in old format: " + currentDate14);
+									
+		//String homeworkscreenFileName14 = currentDate14.toString().replace(":", "-").replace(" ", "-").replace("-EET-2024", "");
+		//System.out.println("Current date in new format: " + homeworkscreenFileName14);
+								
+		//File homeworkscreenFile14 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		//Files.copy(homeworkscreenFile14, new File(".//homeworkscreen/" + homeworkscreenFileName14 + ".png"));
+									
+		//System.out.println("Screenshort12");
+					 
+					 
+			// Thread.sleep(3000);
+			//driver.findElement(By.xpath("//*[@id=\"page\"]/div[3]/div[2]/div/div[2]/div/div[5]")).click(); 
+			//System.out.println("Parola noua e salvata");	 
+					 
+				
+					
+	}
+
+}
