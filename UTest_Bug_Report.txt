@@ -1,0 +1,29 @@
+Utilizatorul nu poate sa se loghezede mai multe ori pe rind
+
+????? ?????
+?????? ?????
+Descriere: Utilizatorul nu poate sa se logheze de mai multe ori pe rînd
+Pre-condi?ii: 
+* dispozitiv desktop conectat la re?eaua de alimentare sau pe baterie
+* sistem de operare 
+* conexiune la re?eaua de internet
+* browser
+Mediu de testare:  https: //utest.com/setat in limba engleza
+Pa?ii de reprodus:
+1. Porne?te dispozitivul
+2. Conecteaza-te la re?eaua de internet
+3. Deschide browser-ul
+4. Tapeaza textul "utest.com " in sec?iunea de cautare
+5. Apasa tasta "Enter"
+6. Da click pe butonul "LogIn"
+7. Tapeaza  "oleseapereu21@gmail.com"în sec?iunea de "email address"
+8. Tapeaza  "Aleksa2112@05"în sec?iunea de "password"
+9. Da click pe butonul "Sign In"
+Rezultatul asteptat: Utilizatorul poate sa se logheze de mai multe ori pe rînd
+Rezultatul actual: Utilizatorul nu poate sa se logheze de mai multe ori pe rînd
+Ata?ament: 1.jpg
+Încercari de repetare: 0
+Nume programator: Stela Stoicev
+Severitatea: Înalta
+Prioritate: Înalta
+
