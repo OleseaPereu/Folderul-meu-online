@@ -1,0 +1,103 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+public class HW11TestCasesGherkin extends GherkinGroupsClass {
+	
+	//WebDriverManager.edgedriver(). setup();
+	EdgeDriver driver = new EdgeDriver();
+
+	 @BeforeGroups(value ={"smoke"})
+	    public void setUpAuthentication() {
+	        System.out.println("test is starting");
+	    }
+	 
+	 
+	 @AfterGroups (value ={"smoke"})
+		public void afterGroups() throws InterruptedException{	
+				Thread.sleep(3000);
+				 System.out.println(" Authentication tests done");
+			
+			}
+
+	@Test(priority=1,groups = "smoke")
+	public void positiveLogInHomePage() throws InterruptedException {
+		driver.get("https://www.utest.com");
+		 driver.manage().window().maximize();
+		 Thread.sleep(3000);
+		driver.findElement(By.xpath("//*[@id=\"onetrust-accept-btn-handler\"]")).click(); 
+		
+		driver.findElement(By.xpath("/html/body/ui-view/unauthenticated-container/div/div/unauthenticated-header/header/div[3]/ul[2]/li[1]/a")).click();
+		System.out.println("Log In registration form");
+		driver.findElement(By.xpath("//*[@id=\"username\"]")).sendKeys("oleseapereu21@gmail.com");
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//*[@id=\"password\"]")).click();
+		driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys("Aleksa2112@05" );
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//*[@id=\"kc-login\"]")).click(); 
+	    System.out.println("Login from Homepage");
+	}
+	
+	@Test (priority= 2,groups="smoke")
+	public void positiveLoginRegistrationForm() throws InterruptedException {
+		driver.get("https://prod-auth.cloud.utest.com/auth/realms/applause/protocol/openid-connect/auth/?client_id=utestv2&redirect_uri=https%3A%2F%2Fwww.utest.com%2Foauth-login%2F&response_type=code");
+		 driver.manage().window().maximize();
+		 Thread.sleep(3000);
+		
+		driver.findElement(By.xpath("//*[@id=\"username\"]")).sendKeys("oleseapereu21@gmail.com");
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//*[@id=\"password\"]")).click();
+		driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys("Aleksa2112@05" );
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//*[@id=\"kc-login\"]")).click(); 
+	    System.out.println("Log In from registration page ");
+	}
+	
+	@Test (priority=3,groups="smoke")
+	public void negativeLogInHomePageUser() throws InterruptedException {
+		driver.get("https://www.utest.com");
+		 driver.manage().window().maximize();
+		 Thread.sleep(3000);
+		//driver.findElement(By.xpath("//*[@id=\"onetrust-accept-btn-handler\"]")).click(); 
+		driver.findElement(By.xpath("/html/body/ui-view/unauthenticated-container/div/div/unauthenticated-header/header/div[3]/ul[2]/li[1]/a")).click();
+		driver.findElement(By.xpath("//*[@id=\"username\"]")).sendKeys("oleseapereu21.com");
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//*[@id=\"password\"]")).click();
+		driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys("Aleksa2112@05" );
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//*[@id=\"kc-login\"]")).click(); 
+	    System.out.println("Login from Homepage:Invalid User Name or Password");
+	}
+	
+	@Test(priority= 5,groups= "smoke")
+	public void negativeCreatAccount() throws InterruptedException {
+		driver.get("https://www.utest.com/signup/personal");
+		driver.manage().window().maximize();
+		 Thread.sleep(3000);
+		 driver.findElement(By.xpath("//*[@id=\"onetrust-accept-btn-handler\"]")).click();
+		 driver.findElement(By.xpath("//*[@id=\"firstName\"]")).click();
+		 Thread.sleep(3000);
+		 driver.findElement(By.xpath("//*[@id=\"firstName\"]")).sendKeys("Alesea");
+		 driver.findElement(By.xpath("//*[@id=\"lastName\"]")).sendKeys("Turanscaia");
+		 driver.findElement(By.xpath("//*[@id=\"email\"]")).sendKeys("alessea111@gmail.com");
+		 driver.findElement(By.xpath("//*[@id=\"regs_container\"]/div/div[2]/div/div[2]/div/form/div[2]/button/span")).click();
+	   System.out.println("Account is not created");
+	 }
+	
+	@Test (priority=4,groups="smoke")
+	public void negativeLogInHomePagePass() throws InterruptedException {
+		driver.get("https://www.utest.com");
+		 driver.manage().window().maximize();
+		 Thread.sleep(3000);
+		driver.findElement(By.xpath("//*[@id=\"onetrust-accept-btn-handler\"]")).click(); 
+		driver.findElement(By.xpath("/html/body/ui-view/unauthenticated-container/div/div/unauthenticated-header/header/div[3]/ul[2]/li[1]/a")).click();
+		driver.findElement(By.xpath("//*[@id=\"username\"]")).sendKeys("oleseapereu21@gmail.com");
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//*[@id=\"password\"]")).click();
+		driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys("1221122" );
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//*[@id=\"kc-login\"]")).click(); 
+	    System.out.println("Login from Homepage:Invalid User Name or password");
+	}
+}
