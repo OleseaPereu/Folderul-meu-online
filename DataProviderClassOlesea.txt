@@ -1,0 +1,82 @@
+public class SimpleClass  extends DriverClass {
+
+	
+    	@Test
+	public void regularTestCase() throws InterruptedException {
+			
+	
+	}
+
+ @Test   (dataProvider = "credentials",dataProviderClass = DataProviderClass.class ) 
+		public void LoginTest(String username, String password) throws InterruptedException {
+   	 driver.get("https://www.saucedemo.com");
+		Thread.sleep(3000);
+		driver.manage().window().maximize();
+	   driver.findElement(By.xpath("//*[@id=\"user-name\"]")).click();
+	  driver.findElement(By.xpath("//*[@id=\"user-name\"]")).sendKeys(username);
+	Thread.sleep(3000);
+		driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys(password);
+		Thread.sleep(3000);
+	    driver.findElement(By.xpath("//*[@id=\"login-button\"]")).click();
+	 Thread.sleep(3000);
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class DriverClass {
+	public static WebDriver driver = null;
+	
+
+	@BeforeSuite
+	public void launchBrowser() throws InterruptedException {
+		WebDriverManager.edgedriver().setup();
+		 driver = new EdgeDriver();
+		Thread.sleep(6000);
+		
+	}
+		@AfterSuite
+	public void closeBrowser() throws InterruptedException{	
+			Thread.sleep(6000);
+		driver.close();
+		
+		}
+		
+	}
+
+import org.testng.annotations.DataProvider;
+
+public class DataProviderClass {
+	@DataProvider(name = "credentials")
+	public Object[][] providerDataSet() {
+		return new Object[][] {
+				{ "standard_user", "secret_sauce" },
+				// {"locked_out_user", "secret_sauce"},
+				//{"problem_user", "secret_sauce"},
+				// {"performance_glitch_user", "secret_sauce"},
+				// {"error_user", "secret_sauce"},
+				// {"visual_user", "secret_sauce"}
+		};
+	
+	
+}
+
+}
+
