@@ -1,0 +1,522 @@
+OrderTest.java
+package testcases;
+
+import java.io.File;
+import java.io.IOException;
+import java.time.Duration;
+import java.util.Date;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
+import org.testng.Reporter;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
+import com.google.common.io.Files;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class OrderTest extends MainPage {
+	
+
+	  @BeforeTest
+	 public void startOrder() throws InterruptedException {
+		
+			//driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15)); //am folosit implicitWait
+			 System.out.println("Am inceput testarea");
+			Reporter.log("Am inceput testarea");
+	  }
+	@Test (priority= 1, description = "titlul pagenii principale")
+	 public void titleTestHomePage() {
+	 		
+	 		String expectedTitle = "Cosmetica Coreeana si Americana în Moldova. Magazin Cosmetice HERB.MD";
+	 		String actualTitle = driver.getTitle();
+	 		
+	 		Assert.assertEquals(actualTitle, expectedTitle); //utilizez HardAseertion p-ru titlu
+	 		Reporter.log("Sa verificat titlul pagenii principale");
+	 		System.out.println("Se verifica titlul pagenii principale");
+	 	}
+	  
+	  @Test (priority= 2, description = "Mouse hover pe catalog menu")
+	  public void catalogMouseHover() throws InterruptedException {
+		  Thread.sleep(2000);
+		  WebElement catalogMenu = driver.findElement(By.xpath("//*[@id=\"page\"]/header/div[1]/nav/div/ul/li[1]/a"));
+		  Actions hoverAction= new Actions(driver);
+		  hoverAction.moveToElement(catalogMenu).perform();// folosesc metoda mouseHover p-ru secțiunea Catalog menu
+		  System.out.println("Mouse hover efectuat");
+		  Reporter.log("Mouse hover efectuat");
+	  }
+	  
+	  @Test(priority= 3, description = "Accesarea Catalog menu")
+	public void accesCatalogMenu() throws InterruptedException {
+	Thread.sleep(2000);
+	driver.findElement(By.xpath("//*[@id=\"page\"]/header/div[1]/nav/div/ul/li[1]/a")).click();// accesez Catalog menu cu metoda xpath
+		      Reporter.log("Aces la Catalog menu");
+		      System.out.println("Am intra in  Catalog");  
+		    
+	  }
+	  
+	  @Test (priority= 4, description = " accesarea  primului element ", groups = "smoke")
+	  public void catalogProdus1() throws InterruptedException {
+	  Thread.sleep(3000);
+	   driver.findElement(By.xpath("//a[starts-with(@class,'item')]")).click();  //accesez primul produs cu metoda XPATH starts-with	
+	        System.out.println("Am accesat elementul Cosmetica koreana");
+	         Reporter.log("Acesla menuCatalog cu metoda Starts with");
+		  
+	  }
+	  @Test  (priority= 5, description = " executarea checkBox ", groups = "smoke")
+	  public void clickCheckBox() throws InterruptedException {
+	  Thread.sleep(3000);
+	   driver.findElement(By.cssSelector("div[data-id='6']")).click(); //selectez produs cu ccsSelector(others)
+	       System.out.println("Se executa CheckBox-click-Cosrx");
+	        Reporter.log("Selectarea produsului cu checkBox click");
+	  }
+	  
+	  @Test (priority= 6, description = " selectarea primului produs ", groups = "smoke")
+	  public void selectProduct1() throws InterruptedException {
+	  Thread.sleep(3000);
+	   driver.findElement(By.xpath("//*[@id=\"products-container\"]/div[1]/div/div/div[1]")).click();// adaug produs in cos prin metoda xpath
+		  Reporter.log("S-a adaugat primul produs in cos");
+		  System.out.println("Se adauga in cos primul produs in cos");
+	  }
+	  
+	 @Test (priority= 7, description = " continuăm cumparaturi ", groups = "smoke")
+     public void  continShop() throws InterruptedException {
+	  Thread.sleep(3000);
+	   driver.findElement(By.cssSelector("a[class='cart-btn'")).click();// continui cumparături cu metoda CssSelector (class)
+			System.out.println("Continuam cumpărături");
+	 }
+	 
+	@Test (priority= 8, description = " currentUrl ", groups = "smoke")
+		  public void currentUrl() {
+		 String currentUrl = driver.getCurrentUrl(); // creez obiectul de tip string care va avea variabila  currentUrl
+			  Reporter.log("Lincul pagenii curente");
+			  System.out.println("adresa curenta este : " + currentUrl);
+			   Reporter.log("Current url");
+		  }
+		
+	 @Test (priority= 9, description = "  se executa metoda windowHandle ", groups = "smoke")
+	public void windowHandle() {
+	String identificatorUnicAlPaginii = driver.getWindowHandle();// folosesc metoda windowHandle care va printa un identificator unic pentru pagina respectiva (id unic) 
+        System.out.println(identificatorUnicAlPaginii);
+         Reporter.log("windowHandle");
+	}
+	 
+	 @Test  (priority= 10, description = " se executa metoda get.Title ", groups = "smoke")
+	 public void mainPageTitle() {
+	 driver.findElement(By.xpath("//*[@id=\"page\"]/header/div[1]/div[2]/div/div/div[1]/div[1]/a/img")).click();	 
+	 String mainpageTitle = driver.getTitle(); // efectuiaz verificarea paginii principale cu getTitle
+	      System.out.println("Title curent este : " + mainpageTitle);
+	       Reporter.log("Current titlu");
+	 }
+	 
+	 @Test  (priority= 11, description = " se acceseaza Catalog menu prin tagName si text ", groups = "smoke")
+	 public void catalog2() throws InterruptedException {
+	 Thread.sleep(3000);
+	 driver.findElement(By.xpath("//a[text()='Catalog']")).click();// accesez Catalog menu prin TagName +Text actual
+	      System.out.println("Se acceseaza catalog menu");
+	 }
+	 
+	 @Test  (priority= 12, description = " se acceseaza a doilea element ", groups = "smoke")
+	 public void ingSpec() throws InterruptedException {
+	 Thread.sleep(2000);
+	 driver.findElement(By.xpath("//*[@id=\"page\"]/header/div[1]/nav/div/ul/li[1]/div/ul/div/li[2]/a")).click();// accesez elem-ul Ingrijiri speciale prinxpath 
+	 }
+	 
+	@Test (priority= 13, description = " cautarea dupa linkText ", groups = "smoke")
+	public void textLink() throws InterruptedException {
+	Thread.sleep(3000);
+	driver.findElement(By.linkText("cosmetice coreene")).click(); // folosesc metoda linkText
+	  Reporter.log("Metoda linkText");
+}
+	
+	@Test (priority= 14, description = " cautarea dupa partiallinkText ", groups = "smoke")
+   public void partialLink() throws InterruptedException {
+	Thread.sleep(2000);
+    driver.findElement(By.partialLinkText("branduri")).click();//folosesc metoda partialLinkText
+	    Reporter.log("Metoda PartialText");
+	}
+	
+	  @Test (priority= 15, description = " efectuarea ScrollingPage", groups = "smoke")
+	   public void scroll() throws InterruptedException {
+		Thread.sleep(2000);
+		WebElement PageScroll = driver.findElement(By.xpath("//*[@id=\"footer\"]/div[2]/div/div[4]/div[1]/span"));
+		 Actions Scroll = new Actions(driver);
+		 Scroll.moveToElement(PageScroll);// am efectuat scrolling p-ru a ajunge la elementul necesar
+		  Scroll.perform();
+			 System.out.println("S-a executat scrolling");
+	   }
+	  
+	  @Test  (priority= 16, description = "accesez elementul News Letters ", groups = "smoke")
+   public void accesNewsLetters() throws InterruptedException {
+  Thread.sleep(3000);
+  driver.findElement(By.cssSelector("input[placeholder='Scrie adresa ta de Email']")).sendKeys("alessea111@gmail.com");//folosesc  metoda sendKeys și tagName[AttributeName='AttributeValue']
+        Reporter.log("News Letters success");
+  }
+	
+	  @Test  (priority= 17, description = " News Letters clear information ", groups = "smoke")
+	   public void clearNewsLetters() throws InterruptedException {
+	   Thread.sleep(3000);
+	    driver.findElement(By.cssSelector("input[placeholder='Scrie adresa ta de Email']")).clear();// folosesc  metoda clear() și tagName[AttributeName='AttributeValue']
+	    
+ }
+
+	  @Test (priority= 18, description = " efectuarea ScrollingPage", groups = "smoke")
+	   public void scrollUpPlacehold1() throws InterruptedException {
+		Thread.sleep(2000);
+		WebElement PageScroll31 = driver.findElement(By.xpath("//*[@id=\"page\"]/div[3]/div[2]/div[2]/div[9]/a/span[1]"));
+		 Actions Scroll31 = new Actions(driver);
+		 Scroll31.moveToElement(PageScroll31);// am efectuat scrolling p-ru a ajunge la elementul necesar
+		  Scroll31.perform();
+			 System.out.println("S-a executat scrolling Up la el-tul Placehold");
+	  }
+	  @Test (priority= 19, description = " efectuarea ScrollingPage", groups = "smoke")
+	   public void scrollUpPlacehold() throws InterruptedException {
+		Thread.sleep(2000);
+		WebElement PageScroll3 = driver.findElement(By.xpath("//*[@id=\"page\"]/header/div[1]/div[2]/div/div/div[1]/div[1]/a/img"));
+		Actions Scroll3 = new Actions(driver);
+		Scroll3.moveToElement(PageScroll3);// am efectuat scrolling p-ru a ajunge la elementul necesar
+		 Scroll3.perform();
+		 System.out.println("S-a executat scrolling Up la el-tul Placehold");
+	  }
+     @Test (priority= 20, description = "accesarea la placeholder ", groups = "smoke")
+	  public void placeholder () throws InterruptedException {
+	  Thread.sleep(3000);
+	  driver.findElement(By.name("search")).click();// efectuez accesarea elementului placeholder cu metoda by Name
+	       System.out.println("Se executa accesarea placeholderului");
+	  }
+	  
+	  @Test (priority=21, description= "dropDown", groups= "smoke")
+	  public void dropDownPlace () throws InterruptedException {
+	 Thread.sleep(2000);
+	  driver.findElement(By.xpath("//*[@id=\"search\"]")).sendKeys("Bal");//folosesc metoda DropDown prin intermediu de testătură
+	  Thread.sleep(2000);
+	  driver.findElement(By.xpath("//*[@id=\"search\"]")).sendKeys(Keys.ARROW_DOWN);
+		Thread.sleep(2000);
+	  driver.findElement(By.xpath("//*[@id=\"search\"]")).sendKeys(Keys.ENTER);
+		   System.out.println("DropDown"); 
+		    Reporter.log("Drop Down");
+	  }
+	  
+	
+	  @Test (priority= 22, description = "adăugarea elementului Balsam in coș", groups = "smoke")
+    public void shopBalsam () throws InterruptedException {
+    Thread.sleep(3000);
+    driver.findElement(By.xpath("//*[@id=\"products-container\"]/div[1]/div/div/div[1]")).click(); // efectuez adăugarea elementului Balsam in coș
+        System.out.println("Se adaugă Balsam in cos");
+}
+	 
+	 @Test (priority= 23, description = " continuăm cumparaturi ", groups = "smoke")
+	  public void  continShoping() throws InterruptedException {
+Thread.sleep(2000);
+driver.findElement(By.xpath("//button[@class='close-btn js-hide-widget' or @type='button']")).click();// folosesc metoda xpath "OR"
+ System.out.println("Continuăm cumpărături");
+	 }
+	
+	 @Test (priority= 24, description = " butonul ProtectieSolara", groups = "smoke")
+	 public void popMenuPS() throws InterruptedException {
+	Thread.sleep(3000);
+	 driver.findElement(By.xpath("//*[@id=\"page\"]/header/div[1]/nav/div/ul/li[2]/a")).click();// accesez sectiunea Protectie Solara
+	System.out.println("Se efectuiaza sectiunea popMenu Protectie Solara");
+	 }
+	 
+	  @Test  (priority= 25, description = " se verifica titlu ProtectieSolara", groups = "smoke")
+      public void titleTestMenuPS() {
+	
+	 String expectedTitle = "Protectie solara impotriva razelor UV-cumpara în ❤Herb.md❤";
+	String actualTitle = driver.getTitle();
+	System.out.println("Titlu pagenii urmeaza a fi verificat");
+		
+	SoftAssert softAssert = new SoftAssert();
+	softAssert.assertEquals(actualTitle, expectedTitle); // efectuez verificarea titlului cu SoftAssert
+	 softAssert.assertAll();
+	 Reporter.log("Se incepe verificarea titlului cu SoftAssert");
+	  }
+	  
+	  @Test (priority= 26, description = " butonul Produse noi", groups = "smoke")
+	public void popMenuProdNew() throws InterruptedException {
+	 Thread.sleep(3000);
+	driver.findElement(By.xpath("//*[@id=\"page\"]/header/div[1]/nav/div/ul/li[3]/a")).click();// accesez sectiunea Produse Noi
+	System.out.println("Se efectuiaza sectiunea popMenu Produse Noi");
+		 }
+		 
+
+	  @Test  (priority= 27, description = " se verifica titlu Produse Noi", groups = "smoke")
+      public void titleTestMenuProdNew() {
+	
+	 String expectedTitle = "Produse Noi";
+	String actualTitle = driver.getTitle();
+	System.out.println("Titlu pagenii urmeaza a fi verificat");
+		
+	SoftAssert softAssert = new SoftAssert();
+	softAssert.assertEquals(actualTitle, expectedTitle); // efectuez verificarea titlului cu SoftAssert
+	 softAssert.assertAll();
+}
+
+	  @Test (priority= 28, description = " butonul Outlet", groups = "smoke")
+		 public void popMenuOutlet() throws InterruptedException {
+		Thread.sleep(3000);
+	driver.findElement(By.xpath("//*[@id=\"page\"]/header/div[1]/nav/div/ul/li[4]/a")).click();// accesez sectiunea Produse Noi
+	System.out.println("Se efectuiaza sectiunea popMenu Outlet");
+		 }
+		 
+	  @Test  (priority= 29, description = " se verifica titlu elementului Outlet", groups = "smoke")
+      public void titleTestMenuOutlet() {
+	
+	 String expectedTitle = "Outlet";
+	String actualTitle = driver.getTitle();
+	System.out.println("Titlu pagenii urmeaza a fi verificat");
+		
+	SoftAssert softAssert = new SoftAssert();
+	softAssert.assertEquals(actualTitle, expectedTitle); // efectuez verificarea titlului cu SoftAssert
+	 softAssert.assertAll();
+}
+	
+	  @Test (priority= 30, description = " butonul BestSeller", groups = "smoke")
+	public void popMenuBestSeller() throws InterruptedException {
+	Thread.sleep(3000);
+	 driver.findElement(By.xpath("//*[@id=\"page\"]/header/div[1]/nav/div/ul/li[5]/a")).click();// accesez sectiunea Produse Noi
+	 System.out.println("Se efectuiaza sectiunea popMenu BestSeller");
+		 }
+	  
+	  @Test  (priority= 31, description = " se verifica titlu elementului BestSeller", groups = "smoke")
+      public void titleTestMenuBestSel() {
+	
+	 String expectedTitle = "BESTSELLER";
+	String actualTitle = driver.getTitle();
+	System.out.println("Titlu pagenii urmeaza a fi verificat");
+		
+	SoftAssert softAssert = new SoftAssert();
+	softAssert.assertEquals(actualTitle, expectedTitle); // efectuez verificarea titlului cu SoftAssert
+	 softAssert.assertAll();
+}
+
+
+	  @Test (priority= 32, description = " butonul Branduri", groups = "smoke")
+	 public void popMenuBrand() throws InterruptedException {
+	Thread.sleep(3000);
+	 driver.findElement(By.xpath("//*[@id=\"page\"]/header/div[1]/nav/div/ul/li[6]/a ")).click();// accesez sectiunea Produse Noi
+	 System.out.println("Se efectuiaza sectiunea popMenu Branduri");
+		 }
+		 
+	  
+	  @Test  (priority= 33, description = " se verifica titlu elementului Branduri", groups = "smoke")
+      public void titleTestMenuBrand() {
+	
+	 String expectedTitle = "Brand-uri";
+	String actualTitle = driver.getTitle();
+	System.out.println("Titlu pagenii urmeaza a fi verificat");
+		
+	SoftAssert softAssert = new SoftAssert();
+	softAssert.assertEquals(actualTitle, expectedTitle); // efectuez verificarea titlului cu SoftAssert
+	 softAssert.assertAll();
+}
+
+	  @Test (priority= 34, description = " butonul Promotii", groups = "smoke")
+	 public void popMenuProm() throws InterruptedException {
+	Thread.sleep(3000);
+	driver.findElement(By.xpath("//*[@id=\"page\"]/header/div[1]/nav/div/ul/li[7]/a")).click();// accesez sectiunea Produse Noi
+	 System.out.println("Se efectuiaza sectiunea popMenu Promotii");
+		 }
+		 
+	  
+	  @Test  (priority= 35, description = " se verifica titlu elementului Promotii", groups = "smoke")
+      public void titleTesMenuProm() {
+	
+	 String expectedTitle = "Promoții";
+	String actualTitle = driver.getTitle();
+	System.out.println("Titlu pagenii urmeaza a fi verificat");
+		
+	SoftAssert softAssert = new SoftAssert();
+	softAssert.assertEquals(actualTitle, expectedTitle); // efectuez verificarea titlului cu SoftAssert
+	 softAssert.assertAll();
+} 
+
+	 @Test (priority= 36, description = " se aplica metoda isDisplayed", groups = "smoke")
+	  public void Displ() {
+	System.out.println(driver.findElement(By.xpath("//*[@id=\"footer\"]/div[2]/div/div[4]/div[2]/div[2]/div/div[1]/img[3]")).isDisplayed());// efectuez verificarea elementului cu metoda isDisplayed
+		
+	  }
+	  
+	  
+	  @Test (priority= 37, description = "  metoda Navigate", groups = "smoke")
+	  public void Navig() {
+		  String herbPageTitle = driver.getTitle();
+		System.out.println("Titlu pagina Herbs: " + herbPageTitle);
+		
+		driver.navigate().to( "https://herb.md/lichidare-de-stoc/" );
+		String shopPageTitle = driver.getTitle();
+		System.out.println(" Titlu pagina Outlet:" + shopPageTitle);// folosesc metoda Navigate pentru a accesa alta pagina in cadrul aceeas tab
+	  }
+	  
+	 @Test  (priority= 38, description = "metoda getText", groups = "smoke")
+	 public void getText1() {
+	System.out.println(driver.findElement(By.xpath("//*[@id=\"page\"]/div[3]/div[2]/div/div[3]/div[1]/a")).getText());// efectuez verificarea elementului cu metoda getText
+	
+	  }
+	  
+	  
+	 @Test (priority= 39, description = "Secțiunea Magazin ", groups = "smoke")
+	  public void magazineMPage() throws InterruptedException {
+		  Thread.sleep(3000);
+		  driver.findElement(By.xpath("//a[text()='Magazine']")).click();// aleg secțiunea Magazine
+	  }
+
+	 
+	 @Test (priority= 40, description = "Scrolling up ", groups = "smoke")
+	 public void scrollToUp() throws InterruptedException {
+		  Thread.sleep(3000);
+		  WebElement contacteUp =driver.findElement(By.xpath("//*[@id=\"page\"]/div[3]/div[1]/div/h1"));
+			Actions act = new Actions(driver);
+			Thread.sleep(3000);
+			act.moveToElement(contacteUp);// folosesc metoda Scrolling p-ru accesarea la el-tul
+			act.perform();
+		  
+	 }
+
+	  
+	 @Test(priority= 41, description = " metoda Switch to", groups = "smoke")
+	 public void SwichToBlog() throws InterruptedException {
+     Thread.sleep(3000);
+
+	String magazinepageTitle = driver.getTitle();
+	      System.out.println("Title curent este : " + magazinepageTitle);
+	
+	driver.findElement(By.xpath("//*[@id=\"page\"]/header/div[1]/div[1]/div/div/div[1]/div/a[2]")).click();
+	Thread.sleep(3000);
+	String blogTitle = driver.getTitle();
+	Reporter.log("metoda Switch to");
+	     System.out.println("Title curent este : " + blogTitle);//folosesc metoda Switch to pentru mutarea de la un tab la altul
+	 
+}
+
+ @Test (priority= 42, description = "metoda AND ", groups = "smoke")
+	 public void articleFirst() throws InterruptedException {
+	Thread.sleep(3000);
+	driver.findElement(By.xpath("//span[@class='article-title' and @itemprop='headline']")).click();//folosesc metoda And 
+}
+ 
+ @Test (priority= 43, description = "Scrolling ", groups = "smoke")
+ public void scrollToBottom() throws InterruptedException {
+ Thread.sleep(3000);
+ WebElement distribArticle =driver.findElement(By.xpath("//*[@id=\"page\"]/div[3]/div[4]/div/div[1]"));
+Actions act = new Actions(driver);
+Thread.sleep(3000);
+act.moveToElement(distribArticle);// se foloseste metoda Scroll
+act.perform();
+	  
+ }
+
+ 
+ @Test  (priority= 44, description = "isDisplIcon Telegram ", groups = "smoke")
+  public void isDisplIconTelegr() throws InterruptedException {
+	  Thread.sleep(3000);
+	  driver.findElement(By.xpath("//*[@id=\"page\"]/div[3]/div[3]/div/div/div[2]/div/ul/li[3]/a/span[1]/span")).isDisplayed();
+	  System.out.println("Displayed icon prin Telegram");// folosesc metoda isDisplayed p-ri iconTelegram
+  } 
+
+ 
+ @Test (priority= 45, description = "Scrolling to number phone ", groups = "smoke")
+ public void scrollToPhone() throws InterruptedException {
+	  Thread.sleep(3000);
+	 WebElement numberPhone =driver.findElement(By.xpath("//*[@id=\"footer\"]/div[2]/div/div[4]/div[2]/div[1]/div[2]/a[1]"));
+	Actions act = new Actions(driver);
+	Thread.sleep(3000);
+		act.moveToElement(numberPhone);// metoda Scroll
+	act.perform();
+		
+ }
+ 
+
+Boolean dataSetUp = true;
+	 @Test(enabled=false)
+	public void Skip() {
+	System.out.println(driver.findElement(By.xpath("//*[@id=\"footer\"]/div[3]/div/div")).isDisplayed()); // acest testcaseeste Skip-uit nu  exicut pentru a economisi timp si nu este important
+	    }
+ 
+ @Test (priority= 46, description = "sectiunea Brand", groups = "smoke")
+ public void sectBrand() throws InterruptedException {
+	 Thread.sleep(3000);
+driver.findElement(By.xpath("//*[@id=\"footer\"]/div[2]/div/div[2]/div/ul/li[2]/a")).click(); //accesez sectiunea Brand
+ }
+  
+ 
+ @Test (priority= 47, description = "sectiuneacu litera  A", groups = "smoke")
+ public void startA() throws InterruptedException {
+	 Thread.sleep(3000);
+	 driver.findElement(By.xpath("//*[@id=\"page\"]/div[3]/div[2]/div[2]/div[2]/a/span[1]")).click();
+	    
+ }
+ 
+ @Test (priority= 48, description = "selectam Favorite", groups = "smoke")
+ public void favoriteA() throws InterruptedException {
+  Thread.sleep(3000);
+ driver.findElement(By.cssSelector("span[data-id='64169']")).click();//folosesc metoda cssSelector p-ru adaugarea in Favorite
+ }
+ 
+	 @Test (priority= 49, description = "adaug in cos Favorite", groups = "smoke")
+	 public void favorCos() throws InterruptedException {
+	Thread.sleep(3000);
+	 driver.findElement(By.cssSelector("div[data-id='64169']")).click();// folosesc metoda cssSelector
+		 
+	 }
+
+	  @Test(priority= 50, description = " Trecerea in  cos de cumparaturi", groups = "smoke")
+	  public void goToCart() throws InterruptedException{ 
+          Thread.sleep(3000);
+	 driver.findElement(By.xpath("//*[@id=\"page\"]/div[3]/div[1]/div[2]/div/div[4]/div/div[2]/div[2]")).click();//accesez cosul meu de cumparaturi
+	  }	  
+	  
+
+	  @Test(priority= 51, description = " Cos", groups = "smoke")
+	  public void cart() throws InterruptedException{ 
+		  Thread.sleep(3000);
+	 driver.findElement(By.xpath("//*[@id=\"page\"]/aside/div[4]/a")).click();//accesez cosul meu de cumparaturi
+	  }	  
+	  
+	  
+	 @Test(priority= 52, description= "screenshot de produse in cos")
+	 public void screenShort() throws InterruptedException, IOException{
+	 Thread.sleep(6000);
+         Date currentDate111 = new Date();
+	 System.out.println("Current date in old format: " + currentDate111);
+				
+		String screenshotFileName11= currentDate111.toString().replace(":", "-").replace(" ", "-").replace("-EET-2024", "");
+		System.out.println("Current date in new format: " + screenshotFileName11);
+				
+  File screenshotFile11 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);// am facut Screenshot la cosul de cumparaturi
+Files.copy(screenshotFile11, new File("C:\\Users\\aless\\eclipse-workspace\\IndividualProject\\src\\test\\resources\\screenshots" + screenshotFileName11 + ".png"));
+//Files.copy(screenshotFile11, new File(".//screenshots/" + screenshotFileName11 + ".png"));
+   System.out.println("Screenshort111");// efectuez screeenshor de produse in cos
+   Reporter.log("ScreenShot produselor in cos");
+	 }
+	
+	  
+	  @Test(priority= 53, description = " Cabinetul meu", groups = "smoke")
+	  public void myCabinet() throws InterruptedException{ 
+	  Thread.sleep(3000);
+	driver.findElement(By.xpath("//*[@id=\"page\"]/header/div[1]/div[2]/div/div/div[2]/div/div[1]")).click();//accesez Cabinetul meu
+	
+	}	  
+	  
+	  @Test(priority= 54, description = " Ies din account", groups = "smoke")
+           public void logOutCabinet() throws InterruptedException{ 
+          Thread.sleep(3000);
+	 driver.findElement(By.cssSelector("a[class='item-link logout']")).click(); //ies din contul meu
+	    Reporter.log("S-a finisat testarea");
+	  }	  
+	  @AfterTest
+	  public void endSession() throws InterruptedException {
+		 	System.out.println("Se inchide sesiunea");	
+		 	Reporter.log("Se inchide sesiunea");
+}
+	
+}
