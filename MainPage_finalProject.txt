@@ -1,0 +1,58 @@
+MainPage
+
+package testcases;
+
+import org.openqa.selenium.By;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import base.BaseTest;
+
+import org.openqa.selenium.By;
+import org.testng.annotations.Test;
+
+
+import utilities.ReadCredentialsXLSFile;
+
+
+public class MainPage  extends BaseTest {
+
+	@Test
+	public void regularTestCase() throws InterruptedException {
+		
+	//driver.get("https://www.herb.md");
+	/Thread.sleep(3000);
+	}
+
+     @Test (dataProvider = "credentials",dataProviderClass = ReadCredentialsXLSFile.class ) 
+	public void LoginTest(String username, String password) throws InterruptedException {
+   // driver.get("https://www.herb.md");
+	driver.manage().window().maximize(); // am folosit metoda manage();
+	//driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(40));// 
+   driver.findElement(By.xpath("//*[@id=\"page\"]/header/div[1]/div[2]/div/div/div[2]/div/div[1]")).click();
+   Thread.sleep(2000);
+	 driver.findElement(By.xpath(loc.getProperty("username_field"))).click();
+	 Thread.sleep(2000);
+	 driver.findElement(By.xpath(loc.getProperty("username_field"))).sendKeys(username);
+	Thread.sleep(2000);
+	driver.findElement(By.xpath(loc.getProperty("password_field"))).sendKeys(password);
+	Thread.sleep(2000);
+    driver.findElement(By.xpath(loc.getProperty("login_button"))).click();
+ 
+}
+
+     
+}
+
+
+
+//public class DataProviderClass {
+//	@DataProvider(name = "credentials")
+	//public Object[][] providerDataSet() {
+	//return new Object[][] {
+
+	//{ "aleksa111@gmail.com", "whitecat111" },
+	// {"olesea111@gmail.com", "user123"} // Data provider class care putem folosi in loc de metoda cu citirea datelor din ExcelFile
+		
+//};
+}
