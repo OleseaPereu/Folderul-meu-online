@@ -1,0 +1,135 @@
+﻿import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class Olx {
+
+	public static void main(String[] args) throws InterruptedException {
+		WebDriverManager.edgedriver().setup();
+		EdgeDriver driver = new EdgeDriver();
+		
+       driver.get("https://olx.ro");
+       driver.manage().window().maximize();
+       Thread.sleep(4000);
+       System.out.println("Am accesat saitul olx.ro");
+       driver.findElement(By.cssSelector("button#onetrust-accept-btn-handler")).click();
+       Thread.sleep(4000);
+       System.out.println("Am dat click pe buttonul accept cookies");
+       driver.findElement(By.xpath("//a[@class='css-12l1k7f']")).click();
+       driver.manage().window().maximize();
+       Thread.sleep(4000);
+       System.out.println("Am apasat Contul meu");
+
+		Thread.sleep(4000);
+		driver.findElement(By.cssSelector("input[name='username'][type='email']")).click();
+		driver.findElement(By.cssSelector("input[name='username'][[type='email']")).sendKeys("alesssea111@gmail.com");
+		System.out.println("Am introdus username");
+		Thread.sleep(4000);
+		driver.findElement(By.cssSelector("input[name='password'][type='password']")).click();
+		driver.findElement(By.cssSelector("input[name='password'][[type='password']")).sendKeys("Aleksa211207");
+		System.out.println("Am introdus password");
+		
+		Thread.sleep(4000);
+		driver.findElement(By.xpath("//button[@data-testid='login-submit-button']")).click();
+		//driver.findElement(By.xpath("//span[text()='Intră în cont']")).click();
+		Thread.sleep(4000);
+       System.out.println("Am intrat pe account");
+   
+   	driver.findElement(By.xpath("//span[ends-with(@class,'-1kpgv52 ')]")).click();
+    Thread.sleep(4000);
+       System.out.println("Sunt pe pagina principala");
+     
+   	driver.findElement(By.cssSelector("span[class='css-xu7uwr']")).click();
+   	 Thread.sleep (4000);
+   	System.out.println("Am ales categoria Electrocasnice");
+  
+   driver.findElement(By.xpath("//a[text()='Laptop-Calculator-Gaming']")).click();
+   Thread.sleep(4000);
+   System.out.println("Am ales elementul Laptop-Calculator-Gaming");
+   	
+       //XPath Relative Locator
+  
+      Thread.sleep(4000);
+      driver.findElement(By.xpath("//input[@placeholder='Ce anume cauți?'][data-cy='search-bar-input']")).click();
+      driver.findElement(By.cssSelector("input[placeholder='Ce anume cauți?'][data-cy='search-bar-input']")).sendKeys("Macbook");
+        System.out.println("Macbook in sectiunea de cautare");
+        Thread.sleep(2000);
+		driver.manage().window().maximize();
+		driver.findElement(By.name("searchBtn")).click();
+		System.out.println("Am accesat butonul Search");  
+		Thread.sleep(2000);
+		driver.manage().window().maximize();
+		driver.findElement(By.cssSelector("a.css-z3gu2d")).click();
+		
+      
+		Thread.sleep(2000);
+		driver.manage().window().maximize();
+	  	 Thread.sleep(4000);
+	  	driver.findElement(By.xpath("//input[@name='email' or @id='input-email']")).sendKeys("olesea@gmail.com");
+		System.out.println("Am apasat butonul cumparatura cu livrare");
+		
+		 driver.manage().window().maximize();
+	  	 Thread.sleep(4000);
+		driver.findElement(By.cssSelector("input[aria-describedby name='personalDetails.firstName']")).sendKeys("Olesea");
+		System.out.println("Nume");
+	       
+		 driver.manage().window().maximize();
+	  	 Thread.sleep(4000);
+		driver.findElement(By.cssSelector("input[aria-describedby name='personalDetails.lastName']")).sendKeys("Pereu");
+		System.out.println("Prenumele");
+	       
+
+		 driver.manage().window().maximize();
+	  	 Thread.sleep(4000);
+		driver.findElement(By.cssSelector("input[type'email']")).sendKeys("alessea111@mail.com");
+		System.out.println("mail");
+	    
+		 driver.manage().window().maximize();
+	  	 Thread.sleep(4000);
+		driver.findElement(By.cssSelector("//input[@type='tel']")).sendKeys("07999999");
+		System.out.println("telefon");
+	       
+	     
+		 driver.manage().window().maximize();
+	  	 Thread.sleep(4000);
+		driver.findElement(By.cssSelector("//input[@type='adress']")).sendKeys("Bucuresti");
+		System.out.println("adress");
+
+		 driver.manage().window().maximize();
+	  	 Thread.sleep(4000);
+		driver.findElement(By.cssSelector("dl. css-1v6eyt1")).click();
+		System.out.println("localitatea selectata");
+	     
+
+		 driver.manage().window().maximize();
+	  	 Thread.sleep(4000);
+		driver.findElement(By.cssSelector("button[name*='1uoqdnz']")).click();
+		System.out.println("continue");
+	 
+
+
+  	 Thread.sleep(4000);
+	driver.findElement(By.cssSelector("//*[@id=\"PageFooter\"]/button[2]/span/span")).click();
+	System.out.println("mergi la comenzile mele");
+ 
+	 Thread.sleep(4000);
+	 driver.findElement(By.cssSelector("	//*[@id=\"body-container\"]/div/div/div/div/div/div[3]/div[1]/div/div[2]/div[2]/div[2]/div/button[2]/div/div[1]\r\n"
+				+ "")).click();
+		System.out.println("Anulează");
+		
+		 Thread.sleep(4000);
+			driver.findElement(By.cssSelector("/html/body/div[9]/div/div/div/div/div[7]/label/span")).click();
+			System.out.println("Alt motiv");
+			
+		
+			Thread.sleep(4000);
+			driver.findElement(By.cssSelector("/html/body/div[9]/div/div/div/div/div[9]/button[2]/div/div")).click();
+			System.out.println("Anulează comanda");
+			
+			
+
+			
+}
+}
